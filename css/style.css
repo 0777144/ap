@@ -1,0 +1,150 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: Arial;
+}
+#menu{
+	position: relative;
+	background-color: #DDD;
+	width: 100%;
+	padding: 10px 5% 10px 5%;
+
+}
+#page_layout{
+	margin: auto;
+	position: relative;
+	background-color: #FFF;
+	width: 791px;
+	overflow: hidden;
+}
+#page_header{
+	padding: 10px;
+	text-align: center;
+	font-size: 20px;
+}
+#page_body{
+	float: left;
+	width: 651px;
+}
+#search{
+	background-color: #e3eaf5;
+}
+.clear{
+	clear: both;
+}
+ul{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+li{
+	padding: 2px 5px 2px 5px;
+	cursor: pointer;
+}
+
+#dark_layer{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.3);
+	z-index:1;
+}
+.box{
+	
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	color:inherit;
+}
+a:visited{
+	color:inherit;
+}
+ul.menu li{
+	display: inline;
+}
+ul.menu li:hover{
+	color: #00118F;
+}
+
+#layer_content{
+	top:35%;
+	position: relative;
+	width: 270px;
+	margin: 0 auto;
+	z-index: 2;
+	background-color: none;
+	padding: 15px;
+}
+
+
+
+
+.basic-grey {
+    margin-left:20px;
+    margin-right:20px;
+    max-width: 500px;
+    background: #F7F7F7;
+    padding: 25px 15px 25px 10px;
+    font: 12px Georgia, "Times New Roman", Times, serif;
+    color: #888;
+    text-shadow: 1px 1px 1px #FFF;
+    border:1px solid #E4E4E4;
+    border-radius: 5px;
+}
+
+.basic-grey input[type="text"], .basic-grey input[type="password"], .basic-grey textarea{
+    border: 1px solid #DADADA;
+    color: #888;
+    height: 30px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    outline: 0 none;
+    padding: 3px 3px 3px 5px;
+    width: 100%;
+    font-size: 12px;
+    line-height:15px;
+    box-shadow: inset 0px 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+    box-sizing:border-box;
+    border-radius: 3px;
+}
+.basic-grey input[type="text"], .basic-grey input[type="password"]{
+	padding-left:15px;
+	outline:none;
+}
+.basic-grey input[type="text"]:hover, .basic-grey input[type="password"]:hover{
+	border: 1px solid #939BF6;
+}
+.basic-grey textarea{
+    padding: 5px 3px 3px 5px;
+}
+.basic-grey textarea{
+    height:100px;
+}
+.basic-grey .button {
+    background: #6DACFE;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    box-shadow: 1px 1px 5px #B6B6B6;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #9E3F3F;
+    cursor: pointer;
+    width:100%;
+    box-sizing:border-box;
+    margin-bottom: 16px;
+    transition:1s;
+    outline:none;ы
+}
+.basic-grey a{
+	text-align: center;
+	font-family: "PT Sans", sans-serif;
+	text-decoration: underline;
+}
+.basic-grey .button:hover {
+	background-color: rgba(109,172,254,0.85);
+}
+
