@@ -1,3 +1,66 @@
+
+$(function () {
+
+	popupDialog('#enter','form_enter');
+
+
+	window.onclick = function(){
+			switch(event.target.id){
+			case 'overlay':
+				$('#overlay').remove();
+				break;
+			case 'exit':
+				$.ajax({
+		  			url: "/ap/user/logout",
+		  			success: function(data){
+						window.location.reload();		
+		  			}
+				});	
+				break;
+		}
+	}
+
+	sendForm('#bttn_registration',function action(){ window.location.replace("/ap/");});
+	sendForm('#bttn_enter',function action(){ window.location.replace("/ap/");});
+
+
+
+
+});
+
+
+	function popupDialog(element, content_name){//на какую кнопку or link какой файл выводить на overlay
+		$('body').on('click',element, function(){
+			$.ajax({
+				url: "/ap/popup/open?content_name=" + content_name,
+				success: function(data){
+					$('body').prepend('<div id="overlay"><div class="popup" >' + data + '\n</div></div>');
+				}
+			});
+		});	
+	}
+
+	function sendForm(button, action){
+		$('body').on('click',button, function(){
+			var form = $(button).parent();
+			var data = form.serialize(); // подготавливаем данные
+			//alert(data);//
+			var args = form.attr('id').split('_');
+			//alert(args[0]+"/"+args[1]);
+			$.ajax({
+	  			url: "/ap/" + args[0] + "/" + args[1],
+				type:'POST',
+	  			data: data,
+	 			success: function(response){
+	 				alert(response);
+	 				action();
+	  			}
+			});			
+		});
+	}
+
+
+/*
 window.onload = function(){
  
   // вызов нужных функций скрипта
@@ -6,10 +69,10 @@ window.onload = function(){
 
 window.onclick = function(){
 	if(event.target.parentNode.className=="menu"){
-		switch(event.target.id){
+		switch(event.target.id){/*
 			case 'enter':
 				$.ajax({
-		  			url: "/ap/application/components/form_enter.php",
+		  			url: "/ap/application/content/-pdialog-form_enter.php",
 		 			success: function(data){
 		 				$('body').prepend('<div id="dark_layer"><div id="layer_content">' + data + '\n</div></div>');
 		  			}
@@ -17,7 +80,7 @@ window.onclick = function(){
 				break;
 			case 'exit':
 				$.ajax({
-		  			url: "/ap/application/func/exit.php",
+		  			url: "/ap/application/func/user_exit.php",
 		  			success: function(data){
 						window.location.reload();		
 		  			}
@@ -41,7 +104,7 @@ window.onclick = function(){
 		
 		var data = $('#form_enter').serialize(); // подготавливаем данные
 		$.ajax({
-  			url: "/ap/application/func/enter.php",
+  			url: "/ap/application/func/user_enter.php",
 			type:'POST',
   			data: data,
  			success: function(response){
@@ -55,7 +118,7 @@ window.onclick = function(){
 	if(event.target.id=="bttn_reg"){
 		var data = $('#form_reg').serialize(); // подготавливаем данные
 		$.ajax({
-  			url: "/ap/application/func/reg.php",
+  			url: "/ap/application/func/user_reg.php",
 			type:'POST',
   			data: data,
  			success: function(response){
@@ -83,3 +146,4 @@ window.onclick = function(){
 	}
 	
 }
+*/

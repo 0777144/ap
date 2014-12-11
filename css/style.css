@@ -42,13 +42,6 @@ li{
 	cursor: pointer;
 }
 
-#dark_layer{
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	background-color: rgba(0,0,0,0.3);
-	z-index:1;
-}
 .box{
 	
 }
@@ -68,15 +61,10 @@ ul.menu li:hover{
 	color: #00118F;
 }
 
-#layer_content{
-	top:35%;
-	position: relative;
-	width: 270px;
-	margin: 0 auto;
-	z-index: 2;
-	background-color: none;
-	padding: 15px;
+#user_login{
+	margin: 0;
 }
+
 
 
 
@@ -148,3 +136,76 @@ ul.menu li:hover{
 	background-color: rgba(109,172,254,0.85);
 }
 
+
+/* - - - - - - - - - - - - - - - -  - -*/
+.basic-grey.reg{
+	background:none;
+	border:none;
+	margin-left:auto;
+	margin-right: auto;
+}
+.reg input[type="text"], .reg input[type="password"], .reg .button{
+	width:300px;
+	margin-left:100px;
+	margin-right: 100px;
+	height:45px;
+	margin-top:0px;
+	margin-bottom:20px;
+}
+/* - - - - - - - - - - - - - - - -  - -*/
+/* - - - - - - - - - - - - - - - -  - -*/
+/* - - - - - - - - - - - - - - - -  - -*/
+/* - - - - - - - - - - - - - - - -  - -*/
+/* - - - - - - - - - - - - - - - -  - -*/
+#overlay {
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+z-index: 1;/* фон затемнения */
+background-color: rgba(0, 0, 0, 0.7);
+position: fixed; /* фиксированное поцизионирование */
+cursor: default; /* тип курсара */
+-webkit-transition: opacity .5s;
+-moz-transition: opacity .5s;
+-ms-transition: opacity .5s;
+-o-transition: opacity .5s;
+transition: opacity .5s;
+padding-top: 15%;
+}
+
+.popup {
+z-index: 10;
+display: block;
+margin: 0 auto;
+
+/* фиксированное позиционирование, окно стабильно при прокрутке */
+position: relative;
+border: 1px solid #383838;
+/* скругление углов */
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+-ms-border-radius: 4px;
+border-radius: 4px;
+background-color: #FFFFFF;
+/* внешняя тень */
+-webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+-moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+-ms-box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+-o-box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.8);
+
+/* эффект перехода (появление) */
+-webkit-transition: all ease .5s;
+-moz-transition: all ease .5s;
+-ms-transition: all ease .5s;
+-o-transition: all ease .5s;
+transition: all ease .5s;
+
+	width: 250px;
+	padding: 0;
+	background-color: none;
+}
+
+/* - - - - - - - - - - - - - - - -  - -*/
+/* - - - - - - - - - - - - - - - -  - -*/

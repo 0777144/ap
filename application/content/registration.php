@@ -1,11 +1,9 @@
-<form id="form_reg">
-	Номер телефона(этот номер будет использоваться для входа в систему)<br>
-	<input type="text" name="phone" id=""><br>
-	Имя Фамилия<br>
-	<input type="text" name="name" id=""><br>
-	Pass<br>
-	<input type="text" name="pass" id=""><br>
-	Email<br>
-	<input type="text" name="email" id=""><br>
-	<input type="button" name="" id="bttn_reg" value="Зарегистрироваться"><br>
+<form method="post" class="basic-grey reg" id="user_add">
+	<input type="text" name="user_phone" placeholder="Телефон"><br>
+	<input type="text" name="user_name" placeholder="Имя"><br>
+	<input type="text" name="user_lastname" placeholder="Фамилия"><br>
+	<input type="text" name="user_email" placeholder="E-mail"><br>
+	<input type="password" name="password" placeholder="Пароль"><br>
+	<!-- <input type="text" name="phone2" placeholder="Доп. телефон"><br> -->
+	<input type="button" class ="button" name="" id="bttn_registration" value="Зарегистрироваться"><br>
 </form>
