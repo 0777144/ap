@@ -1,13 +1,8 @@
 <?
-function db_connect(){
-	$link = mysql_connect('localhost', 'root', 'root');
-	if (!$link) {
-	    die('Ошибка соединения: ' . mysql_error());
-	}
-	//echo 'Успешно соединились';
+include_once '../config/psl-config.php';   // Needed because functions.php is not included
 
-	$db_selected = mysql_select_db('ap', $link);
-	if (!$db_selected) {
-	    die ('Не удалось выбрать базу foo: ' . mysql_error());
-	}
-};
+$mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
+if ($mysqli->connect_error) {
+    header("Location: ../error.php?err=Unable to connect to MySQL");
+    exit();
+}

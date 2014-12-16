@@ -1,7 +1,6 @@
 <?
 	function login($args){
 		//print_r($args);
-		echo SID;
 		$phone = $_POST['phone'];
 		$pass = $_POST['pass'];
 
@@ -15,7 +14,7 @@
 			$_SESSION['AUTH']=1;
 			$_SESSION['USER_ID']=$row['user_id'];
 			$_SESSION['USER_NAME']=$row['user_name'];
-			print_r($_SESSION);
+			//print_r($_SESSION);
 		}
 		
 	}

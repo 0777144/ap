@@ -1,14 +1,15 @@
 ﻿<?php
-//session_start();
+session_start();
 //ini_set('display_errors', 1);
 
-print_r($_COOKIE);
-setcookie("name", 'value', time()+3600);  /* срок действия 1 час */
+print_r(session_id());echo "<br>";
+print_r($_COOKIE);echo "<br>";
+print_r($_SESSION);echo "<br>";
 
 
 
-	include "application/func/db_connect.php";
-	db_connect();
+
+	include_once "application/func/db_connect.php";
 
 $URL = explode('/', $_SERVER['REQUEST_URI']);
 
