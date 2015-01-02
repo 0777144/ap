@@ -11,8 +11,8 @@
 			<li><a href="/ap/user/login_form">Войти</a></li>
 			<li><a href="/ap/reg">Зарегистрироваться</a></li>
 		<?elseif ($logged == 'in'):?>
-			<li id="logout"><a href="/ap/user/logout">Выйти</a></li>
-			<li ><a href="/ap/user/profile"><?=$_SESSION['user_name'];?></a></li>
+			<li><a id="logout" href="/ap/user/logout">Выйти</a></li>
+			<li><a href="/ap/user/profile"><?=$_SESSION['user_name'];?></a></li>
 		<?endif?>
 	</span>		
 

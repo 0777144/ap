@@ -94,7 +94,8 @@ ul#menu li
 
 #user_login
 {
-    margin: 0;
+    margin: 0 auto;
+    width: 250px;
 }
 
 

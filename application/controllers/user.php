@@ -6,7 +6,7 @@
 	}*/
 
 	function login_form($mysqli, $args, $logged = 0) {
-		$header="Регистрация";
+		$header="Войти";
 		$content="user_login_form.php";
 		include "application/template.php";
 	}
@@ -23,7 +23,7 @@
 
 		// Destroy session 
 		session_destroy();
-		
+		//header( 'Refresh: 5; url=http://localhost:8888/ap/' );		
 	}
 
 	function login($mysqli, $args, $logged = 0) {

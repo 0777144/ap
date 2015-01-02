@@ -2,8 +2,8 @@ $(function () {
 	
 	/* */
 	    var $city = $('[name="city"]'),
-        $street = $('[name="street"]'),
-        $building = $('[name="building"]');
+        	$street = $('[name="street"]'),
+        	$building = $('[name="building"]');
 
     var map = null,
         map_created = false;

@@ -52,6 +52,28 @@ $URL = explode('/', $_SERVER['REQUEST_URI']);
 		}
 		else $action = 'index';
 
+//loding resourses
+		$args['scripts']="";
+		$args['links']="";
+
+		$string = file_get_contents("js/resources.json");
+		$json=json_decode($string,true);
+		//print_r($json[$controller][$action]['js']);
+		if(array_key_exists ( $controller , $json ) ){
+			if(array_key_exists ( $action , $json[$controller] ) ) {
+				if(array_key_exists ( 'js' , $json[$controller][$action] )) {
+					foreach ($json[$controller][$action]['js'] as $key => $value) {
+						$args['scripts'].="<script src='$value' type='text/javascript'></script>\n";
+					}
+				}
+				if(array_key_exists ( 'css' , $json[$controller][$action] )) {
+					foreach ($json[$controller][$action]['css'] as $key => $value) {
+						$args['links'].="<link href='$value' rel='stylesheet'>\n";
+					}
+				}
+			}		
+					
+		}
 
 		// echo "Controller: $controller <br>Action: $action <br>Arg:  ";
 		// echo current($args); //index

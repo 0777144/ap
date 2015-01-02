@@ -28,7 +28,7 @@ function sec_session_start() {
 
     // Forces sessions to only use cookies.
     if (ini_set('session.use_only_cookies', 1) === FALSE) {
-        echo "Could not initiate a safe session (ini_set)";
+        //echo "Could not initiate a safe session (ini_set)";
         exit();
     }
     
@@ -81,7 +81,7 @@ function login_check($mysqli, $args =0, $logged = 0 ) {
             }
         } else {
             // Could not prepare statement
-            header("Location: ../error.php?err=Database error: cannot prepare statement");
+            //header("Location: ../error.php?err=Database error: cannot prepare statement");
             exit();
         }
     } else {

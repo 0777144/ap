@@ -1,6 +1,7 @@
 $(function main() {
     //alert("ready-sc2.js");
 	popupDialog('#login','form_login');
+    
     function openDialog() {
         alert("a");
         $.ajax({
@@ -81,13 +82,13 @@ window.onclick = function(){
 	}
 }
 
-	function popupDialog(element, content_name){//на какую кнопку or link какой файл выводить на overlay
-		$('body').on('click',element, function(){
-			$.ajax({
-				url: "/ap/popup/open?content_name=" + content_name,
-				success: function(data){
-					$('body').prepend('<div id="overlay"><div class="popup" >' + data + '\n</div></div>');
-				}
-			});
-		});	
-	}
+function popupDialog(element, content_name){//на какую кнопку or link какой файл выводить на overlay
+	$('body').on('click',element, function(){
+		$.ajax({
+			url: "/ap/popup/open?content_name=" + content_name,
+			success: function(data){
+				$('body').prepend('<div id="overlay"><div class="popup" >' + data + '\n</div></div>');
+			}
+		});
+	});	
+}

@@ -1,6 +1,14 @@
 <?php
-function add($mysqli, $args =0, $logged = 0 ){
+function add($mysqli, $args, $logged ){
+	if($logged == 'out'){
+		$header = "Ошибка";
+		$content = "error.php";
+		$error = "Вы не можете добавлять объекты так как не зарегестрированны";
+	}
+	else {
 		$content='object_add.php';
 		$header="Добавить объект в базу";
-		include "application/template.php";
 	}
+		
+		include "application/template.php";
+}

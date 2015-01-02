@@ -1,6 +1,6 @@
 <?
 function index($mysqli, $args, $logged){
-		if($logged = 'in'){
+		if($logged == 'in'){
 			$header = "Ошибка";
 			$content = "error.php";
 			$error = "Вы уже зарегестрированны";

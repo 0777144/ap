@@ -2,27 +2,15 @@
 <html>
 <head>
 	<title>Estate</title>
-	 <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="/ap/css/style.css">
 	
 	<script src="/ap/js/debug.js"></script>
 	
-	<script src="/ap/js/jquery-2.1.1.js"></script>
+	<script src="/ap/js/lib/jquery-2.1.1.js"></script>
 	<script src="/ap/js/sc2.js"></script>
-	<script src="/ap/js/nav.js"></script>
-
-
-	<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-	<script src="/ap/js/sha512.js"></script>
-	<script src="/ap/js/object_add.js"></script>
-	
-	
-
-
-
-        <link href="/ap/js/jquery.kladr.min.css" rel="stylesheet">
-        <link href="/ap/css/form_with_map.css" rel="stylesheet">
-        <script src="/ap/js/jquery.kladr.min.js" type="text/javascript"></script>
+	<?=$args['links'];?>
+	<?=$args['scripts'];?>
 
 
 </head>

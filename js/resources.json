@@ -1,8 +1,13 @@
 {
     "object": {
       "add":{
-        "js":["object_add.js","jquery.kladr.min.js","http://api-maps.yandex.ru/2.1/?lang=ru_RU"],
-        "css":["query.kladr.min.css","form_with_map.css"]
+        "js":["/ap/js/object_add.js","/ap/js/lib/jquery.kladr.min.js","http://api-maps.yandex.ru/2.1/?lang=ru_RU"],
+        "css":["css/lib/jquery.kladr.min.css","/ap/css/form_with_map.css"]
+        }
+    },
+    "user": {
+      "login_form":{
+        "js":["/ap/js/sha512.js"]
         }
     }
 }
