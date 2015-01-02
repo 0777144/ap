@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Форма для ввода адреса с картой</title>
+
+        <link href="/ap/js/jquery.kladr.min.css" rel="stylesheet">
+        <link href="/ap/css/form_with_map.css" rel="stylesheet">
+
+        <script src="/ap/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="/ap/js/jquery.kladr.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+$(function () {
+    var $city = $('[name="city"]'),
+        $street = $('[name="street"]'),
+        $building = $('[name="building"]');
+
+    var map = null,
+        map_created = false;
+
+    $.kladr.setDefault({
+        parentInput: '.js-form-address',
+        verify: true,
+        parentType: $.kladr.type.city,
+        parentId: $city.val(),
+        select: function (obj) {
+            if(obj['okato'])setArea(obj);
+            //addressUpdate();
+            mapUpdate();
+            if(obj['contentType']=='street'){
+                $building.kladr('controller').clear();
+                $building.focus();
+            }
+        },
+        check: function (obj) {
+            //addressUpdate();
+            mapUpdate();
+        },
+        checkBefore: function () {
+            var $input = $(this);
+
+            if (!$.trim($input.val())) {
+                //addressUpdate();
+                mapUpdate();
+                return false;
+            }
+        },
+        valueFormat: function (obj, query) {
+            var value = '';
+
+            var name = obj.name.toLowerCase();
+            query = query.name.toLowerCase();
+
+            value += obj.typeShort + '. ' + name;
+
+            return value;
+        }
+    });
+
+    //$city.kladr('type', $.kladr.type.city);
+    $street.kladr('type', $.kladr.type.street);
+    $building.kladr('type', $.kladr.type.building);
+
+    //$city.kladr('withParents', true);
+
+    $city.change(function(){
+        // Изменение родительского объекта для автодополнения улиц
+        $street.kladr({parentId: $city.val()});
+        $street.val('');
+        $building.val('');
+        $street.kladr('controller').clear();
+        $building.kladr('controller').clear();
+        //addressUpdate();
+        mapUpdate();
+    });
+
+    // Отключаем проверку введённых данных для строений
+    $building.kladr('verify', false);
+
+
+   
+
+    ymaps.ready(function () {
+        if (map_created) return;
+        map_created = true;
+
+        map = new ymaps.Map('map', {
+            center: [59.94, 30.30],
+            zoom: 12,
+            controls: []
+        });
+
+        map.controls.add('zoomControl', {
+            position: {
+                right: 10,
+                top: 10
+            }
+        });
+
+        //addressUpdate();
+        mapUpdate();
+    });
+
+
+
+    function mapUpdate() {
+        var zoom = 10;
+
+        var address = $.kladr.getAddress('.js-form-address', function (objs) {
+            var result = 'г. ' + $(':selected').text();
+            
+            $.each(objs, function (i, obj) {
+                var name = '',
+                    type = '';
+
+                if ($.type(obj) === 'object') {
+                    name = obj.name;
+                    type = ' ' + obj.type;
+
+                    switch (obj.contentType) {
+                        case $.kladr.type.city:
+                            zoom = 10;
+                            break;
+
+                        case $.kladr.type.street:
+                            zoom = 13;
+                            break;
+
+                        case $.kladr.type.building:
+                            zoom = 16;
+                            break;
+                    }
+                }
+                else {
+                    name = obj;
+                }
+
+                if (result) result += ', ';
+                result += type + name;
+            });
+
+            return result;
+        });
+
+        if (address && map_created) {
+            var geocode = ymaps.geocode(address);
+            geocode.then(function (res) {
+                map.geoObjects.each(function (geoObject) {
+                    map.geoObjects.remove(geoObject);
+                });
+
+                var position = res.geoObjects.get(0).geometry.getCoordinates(),
+                    placemark = new ymaps.Placemark(position, {}, {});
+
+                map.geoObjects.add(placemark);
+                map.setCenter(position, zoom);
+            });
+        }
+    }
+
+/*    function addressUpdate() {
+        var address = $.kladr.getAddress('.js-form-address', function (objs) {
+            var result = 'г. ' + $(':selected').text();
+            
+            $.each(objs, function (i, obj) {
+                var name = '',
+                    type = '';
+
+                if ($.type(obj) === 'object') {
+                    name = ' ' + obj.name;
+                    type = ' ' + obj.typeShort + '.';
+                }
+                else {
+                    name = obj;
+                }
+
+                if (result) result += ', ';
+                result += type + name;
+            });
+
+            return result;
+
+    });
+
+        //$('#address').text(address);
+    }*/
+
+    function setArea(obj) {
+        var okato, i;
+        okato = obj['okato'].substr(0,5);
+        $('[okato='+okato+']').attr("selected","selected");
+    }
+
+});
+        </script>
+
+        <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="address">
+            <h1>Форма для ввода адреса с картой</h1>
+            <div class="col-1">
+                <form class="js-form-address">
+                    <div class="field">
+                         <label>Город</label>
+                            <select name="city">
+                                <option value="7700000000000" >Москва</option>
+                                <option value="7800000000000" selected>Санкт-Петербург</option>
+                            </select>
+                    </div>
+                    <div class="field">
+                        <label>Улица</label>
+                        <input name="street" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Номер дома</label>
+                        <input name="building" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Район</label>
+                        <select name="area">
+                            <option okato="40262"> Адмиралтейский район</option>
+                            <option okato="40263"> Василеостровский район</option>
+                            <option okato="40265"> Выборгский район</option>
+                            <option okato="40273"> Калининский район</option>
+                            <option okato="40276"> Кировский район</option>
+                            <option okato="40277"> Колпинский район</option>
+                            <option okato="40278"> Красногвардейский район</option>
+                            <option okato="40279"> Красносельский район</option>
+                            <option okato="40280"> Кронштадтский район</option>
+                            <option okato="40290"> Петродворцовый район</option>
+                            <option okato="40270"> Приморский район</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="col-2">
+                <div id="map" class="panel-map"></div>
+            </div>
+        </div>
+    </body>
+</html>

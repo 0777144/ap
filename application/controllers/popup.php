@@ -1,8 +1,8 @@
 <?
-		function open($args){
+		function open($mysqli,$args, $logged = 0){
 			switch ($args['content_name']) {
-				case 'form_enter':
-					include "application/content/-pdialog-form_enter.php";
+				case 'login':
+					include "application/content/-pdialog-form_login.php";
 					break;
 				
 				default:

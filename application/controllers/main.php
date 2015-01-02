@@ -1,6 +1,6 @@
 <?php
-function index(){
+function index($mysqli, $args =0, $logged = 0 ){
 		$header="mainpage";
-		$content=basename(__FILE__);
+		$content="main_index.php";
 		include "application/template.php";
 	}

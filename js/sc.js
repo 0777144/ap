@@ -20,10 +20,9 @@ $(function () {
 		}
 	}
 
-	sendForm('#bttn_registration',function action(){ window.location.replace("/ap/");});
+
+	sendForm('#bttn_registration', function action(){ window.location.replace("/ap/");});
 	sendForm('#bttn_enter',function action(){ window.location.replace("/ap/");});
-
-
 
 
 });
@@ -53,11 +52,69 @@ $(function () {
 	  			data: data,
 	 			success: function(response){
 	 				alert(response);
-	 				action();
+	 				//action();
 	  			}
 			});			
 		});
 	}
+
+
+function regformhash(form, user_phone, user_password, user_confpassword, email) {
+    // Check each field has a value
+    if (user_phone.value == '' || user_password.value == '' || user_confpassword.value == '' || email.value == '') {
+        alert('You must provide all the requested details. Please try again');
+        return false;
+    }
+    
+    // Check the username
+    var re = /^\+7[0-9]{10}$/; //!!!написать регулярку на +71234567890
+    if(!re.test(form.user_phone.value)) { 
+        alert("User phone must be like +79345671234 Please try again"); 
+        form.user_phone.focus();
+        return false; 
+    }
+    
+    // Check that the password is sufficiently long (min 6 chars)
+    // The check is duplicated below, but this is included to give more
+    // specific guidance to the user
+    if (user_password.value.length < 6) {
+        alert('Passwords must be at least 6 characters long.  Please try again');
+        form.user_password.focus();
+        return false;
+    }
+    
+    // At least one number, one lowercase and one uppercase letter 
+    // At least six characters 
+    re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/; 
+    if (!re.test(user_password.value)) {
+        alert('Passwords must contain at least one number, one lowercase and one uppercase letter.  Please try again');
+        return false;
+    }
+    
+    // Check password and confirmation are the same
+    if (user_password.value != user_confpassword.value) {
+        alert('Your password and confirmation do not match. Please try again');
+        form.user_password.focus();
+        return false;
+    }
+        
+    // Create a new element input, this will be our hashed password field. 
+    var p = document.createElement("input");
+
+    // Add the new element to our form. 
+    form.appendChild(p);
+    p.name = "p";
+    p.type = "text";
+    p.value = hex_sha512(user_password.value);
+
+    // Make sure the plaintext password doesn't get sent. 
+    user_password.value = "";
+    user_confpassword.value = "";
+
+    // Finally submit the form. 
+    //form.submit();
+    return true;
+}
 
 
 /*

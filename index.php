@@ -1,19 +1,36 @@
 ﻿<?php
-session_start();
-//ini_set('display_errors', 1);
+//session_start();
+include_once "application/func/db_connect.php";
+include_once 'application/controllers/functions.php';
 
-print_r(session_id());echo "<br>";
-print_r($_COOKIE);echo "<br>";
-print_r($_SESSION);echo "<br>";
+/*
+
+$query = "SELECT * FROM users";
+$result = $mysqli->query($query);
+echo "<table>";
+while($row =$result->fetch_assoc()){
+	echo "<tr><td>".$row['user_id']."</td><td>".$row['user_phone']."</td><td>".$row['user_name']."</td><td>";
+}
+echo "</table>";
+
+exit();
+
+*/
+
+sec_session_start();
+ini_set('display_errors', 1);
 
 
-
-
-	include_once "application/func/db_connect.php";
+if (login_check($mysqli) == true) {
+    $logged = 'in';
+} else {
+    $logged = 'out';
+}
 
 $URL = explode('/', $_SERVER['REQUEST_URI']);
 
 		// получаем имя контроллера
+		//print_r($URL);
 		if ( !empty($URL[2]) )$controller = $URL[2];
 		else $controller = 'main';
 		
@@ -35,14 +52,23 @@ $URL = explode('/', $_SERVER['REQUEST_URI']);
 		}
 		else $action = 'index';
 
-		//echo "Controller: $controller <br>Action: $action <br>Arg: $args ";
+
+		// echo "Controller: $controller <br>Action: $action <br>Arg:  ";
+		// echo current($args); //index
+		// echo key($args); //main
+		
+
+
 
 		$controller_path="application/controllers/$controller.php";
 
 		if(file_exists($controller_path))include $controller_path;
 		//else Route::ErrorPage404();//правильно было бы кинуть здесь исключение,но для упрощения сразу сделаем редирект на страницу 404
 			
-		if(function_exists($action))$action($args);
+		if(function_exists($action))$action($mysqli,$args,$logged);
 		//else Route::ErrorPage404();// здесь также разумнее было бы кинуть исключение
-			
-	
+				
+
+// print_r(session_id());echo "<br>";
+// print_r($_COOKIE);echo "<br>";
+// print_r($_SESSION);echo "<br>";

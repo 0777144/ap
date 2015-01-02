@@ -12,9 +12,9 @@
  * These are the database login details
  */
 define("HOST", "localhost"); 			// The host you want to connect to. 
-define("USER", "sec_user"); 			// The database username. 
-define("PASSWORD", "DsK3zSUbn8cQVWH7"); 	// The database password. 
-define("DATABASE", "secure_login");             // The database name.
+define("USER", "root"); 			// The database username. 
+define("PASSWORD", "root"); 	// The database password. 
+define("DATABASE", "ap");             // The database name.
 
 /**
  * Who can register and what the default role will be
