@@ -18,11 +18,12 @@ button
 #menu
 {
     box-sizing: border-box;
-    width: 100%;
+    min-width: 791px;
+  
     padding: 10px 5% 10px 5%;
 
-    background-color: #eaebeb;
-    box-shadow: 0 -3px 10px -5px #111 inset;
+    background-color: #FFF;
+    border-bottom:0px solid #CDCCC9;
 }
 #page_layout
 {
@@ -31,7 +32,7 @@ button
     overflow: hidden;
 
     width: 791px;
-    margin: auto;
+    margin: 0 auto;
 
     background-color: #fff;
 }
@@ -47,7 +48,8 @@ button
 {
     float: left;
 
-    width: 651px;
+    width: 100%;
+    margin: 0 auto;
 }
 .clear
 {
@@ -94,8 +96,8 @@ ul#menu li
 
 #user_login
 {
-    margin: 0 auto;
     width: 250px;
+    margin: auto;
 }
 
 
@@ -194,10 +196,10 @@ ul#menu li
 
 
 /* - - - - - - - - - - - - - - - -  - -*/
-.basic-grey.reg
+.basic-grey#user_add,
+.basic-grey#user_login
 {
-    margin-right: auto;
-    margin-left: auto;
+    margin: 0 auto;
 
     border: none;
     background: none;
@@ -283,3 +285,17 @@ ul#menu li
 {
     float: right;
 }
+
+.clear 
+{
+    clear: both;
+}
+
+.line
+{
+    border-bottom: 1px solid #CDCCC9;
+    width: 791px;
+    margin: 0 auto;
+}
+/* -------------------- Select Box Styles: stackoverflow.com Method */
+/* -------------------- Source: http://stackoverflow.com/a/5809186 */

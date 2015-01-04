@@ -1,11 +1,11 @@
-﻿
-.address {
-    width: 808px;
-    margin: 40px auto 0;
-    padding: 40px;
-    border: 2px solid #e1e1e1;
-    background-color: #f7f7f7;
-    box-shadow: rgba(0, 0, 0, 0.075) 1px 1px 5px;
+﻿body, input {
+    color: #555;
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+input, button {
+    outline: none;
 }
 
 .address h1 {
@@ -16,17 +16,15 @@
     text-align: center;
 }
 
-.address .kladr-error {
+.kladr-error {
     color: #df2c0f;
 }
 
-.col-1 {
+.field_block {
     float: left;
+    padding: 15px;
 }
 
-.col-2 {
-    margin-left: 384px;
-}
 
 .field label {
     display: inline-block;
@@ -37,6 +35,7 @@
 .field {
     margin-bottom: 20px;
     padding: 0;
+    border: 0px solid red;
 }
 
 .field input {
@@ -48,12 +47,15 @@
 }
 
 .panel-map {
-    width: 384px;
-    height: 582px;
-    padding: 20px;
+    display: inline-block;
+    position: relative;
+    float: right;
+    width: 300px;
+    height: 300px;
+    padding: 0px;
     border: 1px solid #d8d8d8;
     background: #ffffff;
-    background-size: 400px 250px;
+    border: 0px solid red;
 }
 
 .addition {
@@ -99,4 +101,35 @@
 
 #kladr_autocomplete small {
     color: #AAA;
+}
+
+select.soflow
+{
+    font-size: inherit;
+
+    overflow: hidden;
+    outline: none;
+    width: 256px;
+    height: 2em;
+    padding: 0 7px;
+    margin: 0;
+
+    -webkit-user-select: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: #555;
+    border: 1px solid #d8d8d8;
+    padding: 0 7px;
+    background-color: #FFF;
+}
+
+
+.block1
+{
+    overflow: auto;
+    margin: 10px;
+    padding: 0;
+    border: 1px solid #CDCCC9;
+   
 }

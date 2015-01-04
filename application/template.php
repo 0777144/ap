@@ -16,9 +16,9 @@
 </head>
 <body>
 	<? include_once "application/content/menu.php";?>
-	
+	<div class="line"></div>
 	<div id="page_layout">
-		<div id="page_header"><?=$header;?></div>
+		<!-- <div id="page_header"><?=$header;?></div> -->
 		<div id="page_body">
 			<div id="content"><? include "application/content/$content";?></div>
 		</div>
